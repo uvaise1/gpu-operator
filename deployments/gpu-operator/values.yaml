@@ -9,8 +9,8 @@ nfd:
   enabled: true
 
 operator:
-  repository: nvcr.io/nvidia
-  image: gpu-operator
+  repository: image-registry.openshift-image-registry.svc:5000/openshift
+  image: gpu-operator-ppc64le
   # If version is not specified, then default is to use chart.AppVersion
   #version: 1.5.0
   imagePullPolicy: IfNotPresent
@@ -89,9 +89,9 @@ toolkit:
   resources: {}
 
 devicePlugin:
-  repository: nvcr.io/nvidia
-  image: k8s-device-plugin
-  version: v0.7.3
+  repository: image-registry.openshift-image-registry.svc:5000/openshift
+  image: k8s-device-plugin-ppc64le
+  version: v0.7.3-ubi8
   imagePullPolicy: IfNotPresent
   imagePullSecrets: []
   args:
@@ -110,9 +110,9 @@ devicePlugin:
   resources: {}
 
 dcgmExporter:
-  repository: nvcr.io/nvidia/k8s
-  image: dcgm-exporter
-  version: 2.0.13-2.1.2-ubuntu20.04
+  repository: image-registry.openshift-image-registry.svc:5000/openshift
+  image: dcgm-exporter-ppc64le
+  version: 2.0.13-2.1.1-ubi8
   imagePullPolicy: IfNotPresent
   args:
     - "-f"
@@ -126,8 +126,8 @@ dcgmExporter:
   resources: {}
 
 gfd:
-  repository: nvcr.io/nvidia
-  image: gpu-feature-discovery
+  repository: image-registry.openshift-image-registry.svc:5000/openshift
+  image: gpu-feature-discovery-ppc64le
   version: v0.3.0
   imagePullPolicy: IfNotPresent
   imagePullSecrets: []
