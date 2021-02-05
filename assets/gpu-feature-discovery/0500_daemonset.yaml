@@ -23,7 +23,7 @@ spec:
           name: gpu-feature-discovery
           command: ["sh", "-c"]
           args: ["export SYS_LIBRARY_PATH=$(ldconfig -v 2>/dev/null | grep -v '^[[:space:]]' | cut -d':' -f1 | tr '[[:space:]]' ':'); \
-          export NVIDIA_LIBRARY_PATH=/run/nvidia/driver/usr/lib/x86_64-linux-gnu/:/run/nvidia/driver/usr/lib64; \
+          export NVIDIA_LIBRARY_PATH=/run/nvidia/driver/usr/lib/powerpc64le-linux-gnu/:/run/nvidia/driver/usr/lib64; \
           export LD_LIBRARY_PATH=${SYS_LIBRARY_PATH}:${NVIDIA_LIBRARY_PATH}; echo ${LD_LIBRARY_PATH}; gpu-feature-discovery"]
           volumeMounts:
             - name: output-dir
