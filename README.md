@@ -9,18 +9,21 @@ podman pull mgiessing/gpu-operator-ppc64le:1.5.1
 podman pull mgiessing/gpu-feature-discovery-ppc64le:v0.3.0
 podman pull mgiessing/k8s-device-plugin-ppc64le:v0.7.3-ubi8
 podman pull mgiessing/dcgm-exporter-ppc64le:2.0.13-2.1.1-ubi8
+podman pull mgiessing/node-feature-discovery-ppc64le:v0.6.0
 
 #Tag
 podman tag mgiessing/gpu-operator-ppc64le:1.5.1 $HOST/openshift/gpu-operator-ppc64le:1.5.1 
 podman tag mgiessing/gpu-feature-discovery-ppc64le:v0.3.0 $HOST/openshift/gpu-feature-discovery-ppc64le:v0.3.0
 pdoman tag mgiessing/k8s-device-plugin-ppc64le:v0.7.3-ubi8 $HOST/openshift/k8s-device-plugin-ppc64le:v0.7.3-ubi8
 podman tag mgiessing/dcgm-exporter-ppc64le:2.0.13-2.1.1-ubi8 $HOST/openshift/dcgm-exporter-ppc64le:2.0.13-2.1.1-ubi8
+podman tag mgiessing/node-feature-discovery-ppc64le:v0.6.0 $HOST/openshift/node-feature-discovery-ppc64le:v0.6.0
 
 #Push to internal registry (you might need to login to openshift and/or podman)
 podman push $HOST/openshift/gpu-operator-ppc64le:1.5.1 --tls-verify=False
 podman push $HOST/openshift/gpu-feature-discovery-ppc64le:v0.3.0 --tls-verify=False
 podman push $HOST/openshift/k8s-device-plugin-ppc64le:v0.7.3-ubi8 --tls-verify=False
 podman push $HOST/openshift/dcgm-exporter-ppc64le:2.0.13-2.1.1-ubi8 --tls-verify=False
+podman push $HOST/openshift/node-feature-discovery-ppc64le:v0.6.0 --tls-verify=False
 ```
 
 Follow this setup and replace the x86/nvidia variables with this repository ones:
