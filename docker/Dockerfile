@@ -34,7 +34,7 @@ COPY api/ api/
 COPY controllers/ controllers/
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on \
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=ppc64le GO111MODULE=on \
     go build -a -o gpu-operator main.go
 
 FROM ${CUDA_IMAGE}:${CUDA_VERSION}-base-${BASE_DIST}
@@ -62,7 +62,7 @@ COPY hack/must-gather.sh /usr/bin/gather
 ENV VERSION=${VERSION}
 
 # Install must-gather dependency: `kubectl`
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
 

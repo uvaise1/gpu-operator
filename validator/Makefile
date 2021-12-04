@@ -22,7 +22,7 @@ BUILDER_IMAGE ?= golang:$(GOLANG_VERSION)
 BUILD_DIR ?= ../
 
 ifeq ($(IMAGE),)
-REGISTRY ?= nvcr.io/nvidia/cloud-native
+REGISTRY ?= quay.io/mgiessing
 IMAGE := $(REGISTRY)/gpu-operator-validator
 endif
 
@@ -66,7 +66,7 @@ $(BUILD_TARGETS): build-%:
 			--build-arg VERSION="$(VERSION)" \
 			--build-arg BUILDER_IMAGE="$(BUILDER_IMAGE)" \
 			--build-arg GOLANG_VERSION="$(GOLANG_VERSION)" \
-			--build-arg CUDA_SAMPLE_IMAGE=nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.2.1-$(*) \
+			--build-arg CUDA_SAMPLE_IMAGE=quay.io/mgiessing/cuda-sample:vectoradd-cuda11.2.1-$(*) \
 			--tag $(IMAGE):$(VERSION)-$(*) \
 			--file Dockerfile \
 			$(BUILD_DIR)

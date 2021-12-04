@@ -144,7 +144,7 @@ CUDA_VERSION ?= 11.4.2
 GOLANG_VERSION ?= 1.15
 BUILDER_IMAGE ?= golang:$(GOLANG_VERSION)
 ifeq ($(IMAGE),)
-REGISTRY ?= nvcr.io/nvidia/cloud-native
+REGISTRY ?= quay.io/mgiessing
 IMAGE := $(REGISTRY)/gpu-operator
 endif
 IMAGE_TAG ?= $(GOLANG_VERSION)
