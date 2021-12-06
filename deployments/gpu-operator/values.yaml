@@ -95,7 +95,7 @@ driver:
   manager:
     image: k8s-driver-manager
     repository: quay.io/mgiessing
-    version: v0.2.0
+    version: v0.2.0-ubi8
     imagePullPolicy: IfNotPresent
     env:
       - name: ENABLE_AUTO_DRAIN
@@ -170,7 +170,7 @@ dcgm:
   enabled: true
   repository: quay.io/mgiessing
   image: dcgm
-  version: 2.3.1-ubuntu20.04
+  version: 2.3.1-ubi8
   imagePullPolicy: IfNotPresent
   hostPort: 5555
   args: []
@@ -181,7 +181,7 @@ dcgm:
 dcgmExporter:
   repository: quay.io/mgiessing
   image: dcgm-exporter
-  version: 2.3.1-2.6.0-ubuntu20.04
+  version: 2.3.1-2.6.0-ubi8
   imagePullPolicy: IfNotPresent
   env:
     - name: DCGM_EXPORTER_LISTEN
@@ -210,10 +210,10 @@ gfd:
 
 
 migManager:
-  enabled: false
+  enabled: true
   repository: quay.io/mgiessing
   image: k8s-mig-manager
-  version: v0.2.0-ubuntu20.04
+  version: v0.2.0-ubi8
   imagePullPolicy: IfNotPresent
   imagePullSecrets: []
   env:
