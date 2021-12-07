@@ -40,7 +40,7 @@ spec:
             - name: output-dir
               mountPath: "/etc/kubernetes/node-feature-discovery/features.d"
             - name: dmi-product-name
-              mountPath: "/sys/class/dmi/id/product_name"
+              mountPath: "/proc/device-tree/model"
           securityContext:
             privileged: true
       volumes:
@@ -49,7 +49,7 @@ spec:
             path: "/etc/kubernetes/node-feature-discovery/features.d"
         - name: dmi-product-name
           hostPath:
-            path: "/sys/class/dmi/id/product_name"
+            path: "/proc/device-tree/model"
         - name: run-nvidia
           hostPath:
             path: "/run/nvidia"

@@ -46,6 +46,8 @@ spec:
           - name: host-os-release
             mountPath: "/host-etc/os-release"
             readOnly: true
+          - name: sys
+            mountPath: /sys
       volumes:
         - name: run-nvidia
           hostPath:
@@ -65,3 +67,7 @@ spec:
         - name: host-os-release
           hostPath:
             path: "/etc/os-release"
+        - name: sys
+          hostPath:
+            path: "/sys"
+            type: ''

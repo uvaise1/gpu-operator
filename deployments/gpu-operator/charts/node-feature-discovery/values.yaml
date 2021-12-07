@@ -3,10 +3,10 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: quay.io/kubernetes_incubator/node-feature-discovery
-  pullPolicy: IfNotPresent
+  repository: quay.io/mgiessing/node-feature-discovery
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.6.0"
+  tag: "v0.8.2"
 
 imagePullSecrets: []
 nameOverride: ""

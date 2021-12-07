@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 platform:
-  openshift: false
+  openshift: true
 
 nfd:
   enabled: true
@@ -12,10 +12,10 @@ psp:
   enabled: false
 
 validator:
-  repository: nvcr.io/nvidia/cloud-native
+  repository: quay.io/mgiessing
   image: gpu-operator-validator
   version: v1.7.0
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   imagePullSecrets: []
   env: []
   args: []
@@ -39,19 +39,19 @@ validator:
         value: "true"
 
 operator:
-  repository: nvcr.io/nvidia
+  repository: quay.io/mgiessing
   image: gpu-operator
   # If version is not specified, then default is to use chart.AppVersion
-  #version: v1.7.0
-  imagePullPolicy: IfNotPresent
+  version: v1.7.0
+  imagePullPolicy: Always
   imagePullSecrets: []
   priorityClassName: system-node-critical
-  defaultRuntime: docker
+  defaultRuntime: crio
   initContainer:
-    image: cuda
-    repository: nvcr.io/nvidia
+    image: cuda-ppc64le
+    repository: quay.io/mgiessing
     version: 11.2.1-base-ubi8
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy: Always
   tolerations:
   - key: "node-role.kubernetes.io/master"
     operator: "Equal"
@@ -76,10 +76,10 @@ mig:
 
 driver:
   enabled: true
-  repository: nvcr.io/nvidia
+  repository: quay.io/mgiessing
   image: driver
   version: "460.73.01"
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   imagePullSecrets: []
   env: []
   tolerations:
@@ -106,10 +106,10 @@ driver:
 
 toolkit:
   enabled: true
-  repository: nvcr.io/nvidia/k8s
+  repository: quay.io/mgiessing
   image: container-toolkit
-  version: 1.5.0-ubuntu18.04
-  imagePullPolicy: IfNotPresent
+  version: 1.5.0-ubi8
+  imagePullPolicy: Always
   imagePullSecrets: []
   env: []
   tolerations:
@@ -128,10 +128,10 @@ toolkit:
   priorityClassName: system-node-critical
 
 devicePlugin:
-  repository: nvcr.io/nvidia
+  repository: quay.io/mgiessing
   image: k8s-device-plugin
   version: v0.9.0-ubi8
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   imagePullSecrets: []
   args: []
   env:
@@ -161,10 +161,10 @@ devicePlugin:
   priorityClassName: system-node-critical
 
 dcgmExporter:
-  repository: nvcr.io/nvidia/k8s
+  repository: quay.io/mgiessing
   image: dcgm-exporter
-  version: 2.1.8-2.4.0-rc.2-ubuntu20.04
-  imagePullPolicy: IfNotPresent
+  version: 2.2.9-2.4.0-ubi8
+  imagePullPolicy: Always
   args:
     - "-f"
     - "/etc/dcgm-exporter/dcp-metrics-included.csv"
@@ -182,10 +182,10 @@ dcgmExporter:
   priorityClassName: system-node-critical
 
 gfd:
-  repository: nvcr.io/nvidia
+  repository: quay.io/mgiessing
   image: gpu-feature-discovery
   version: v0.4.1
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   imagePullSecrets: []
   tolerations:
     - key: nvidia.com/gpu
@@ -210,7 +210,7 @@ migManager:
   repository: nvcr.io/nvidia/cloud-native
   image: k8s-mig-manager
   version: v0.1.1-ubuntu20.04
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   imagePullSecrets: []
   tolerations:
     - key: nvidia.com/gpu
