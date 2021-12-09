@@ -6,7 +6,7 @@ platform:
   openshift: true
 
 nfd:
-  enabled: true
+  enabled: false
 
 psp:
   enabled: false
@@ -45,7 +45,7 @@ operator:
   imagePullPolicy: Always 
   imagePullSecrets: []
   priorityClassName: system-node-critical
-  defaultRuntime: docker
+  defaultRuntime: crio
   runtimeClass: nvidia
   initContainer:
     image: cuda
@@ -86,7 +86,7 @@ driver:
   use_ocp_driver_toolkit: false
   repository: quay.io/mgiessing
   image: driver
-  version: "470.82.01"
+  version: "470.82.01-kvm"
   imagePullPolicy: Always 
   imagePullSecrets: []
   rdma:
