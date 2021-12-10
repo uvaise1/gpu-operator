@@ -167,7 +167,7 @@ devicePlugin:
   resources: {}
 
 dcgm:
-  enabled: true
+  enabled: false
   repository: quay.io/mgiessing
   image: dcgm
   version: 2.3.1-ubi8
@@ -208,9 +208,9 @@ gfd:
   securityContext: {}
   resources: {}
 
-
+# Is not supported for Power GPUs anyway (only A100 & A30 are supported --> https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#supported-gpus
 migManager:
-  enabled: true
+  enabled: false
   repository: quay.io/mgiessing
   image: k8s-mig-manager
   version: v0.2.0-ubi8
