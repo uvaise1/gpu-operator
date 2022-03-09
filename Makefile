@@ -19,7 +19,7 @@ DOCKER ?= docker
 # To re-generate a bundle for another specific version without changing the standard setup, you can:
 # - use the VERSION as arg of the bundle target (e.g make bundle VERSION=0.0.2)
 # - use environment variables to overwrite this value (e.g export VERSION=0.0.2)
-VERSION ?= latest
+VERSION ?= v1.9.1
 
 # CHANNELS define the bundle channels used in the bundle.
 # Add a new line here if you would like to change its default config. (E.g CHANNELS = "preview,fast,stable")
@@ -144,7 +144,7 @@ CUDA_VERSION ?= 11.4.2
 GOLANG_VERSION ?= 1.17
 BUILDER_IMAGE ?= golang:$(GOLANG_VERSION)
 ifeq ($(IMAGE),)
-REGISTRY ?= nvcr.io/nvidia/cloud-native
+REGISTRY ?= quay.io/mgiessing
 IMAGE := $(REGISTRY)/gpu-operator
 endif
 IMAGE_TAG ?= $(GOLANG_VERSION)
