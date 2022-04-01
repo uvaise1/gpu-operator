@@ -26,7 +26,7 @@ CUDA_IMAGE ?= nvidia/cuda
 BUILDER_IMAGE ?= golang:$(GOLANG_VERSION)
 
 ifeq ($(IMAGE_NAME),)
-REGISTRY ?= nvcr.io/nvidia/cloud-native
+REGISTRY ?= quay.io/mgiessing
 IMAGE_NAME := $(REGISTRY)/gpu-operator-validator
 endif
 
@@ -83,7 +83,7 @@ $(BUILD_TARGETS): build-%:
 		--build-arg CUDA_VERSION="$(CUDA_VERSION)" \
 		--build-arg VERSION="$(VERSION)" \
 		--build-arg BUILDER_IMAGE="$(BUILDER_IMAGE)" \
-		--build-arg CUDA_SAMPLE_IMAGE=nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.6.0-$(*) \
+		--build-arg CUDA_SAMPLE_IMAGE=quay.io/mgiessing/cuda-sample:vectoradd-cuda11.6.0-$(*) \
 		--build-arg GOLANG_VERSION="$(GOLANG_VERSION)" \
 		--build-arg CVE_UPDATES="$(CVE_UPDATES)" \
 		--file $(DOCKERFILE) $(BUILD_DIR)
