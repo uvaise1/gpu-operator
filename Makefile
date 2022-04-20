@@ -27,7 +27,7 @@ CUDA_IMAGE ?= nvidia/cuda
 BUILDER_IMAGE ?= golang:$(GOLANG_VERSION)
 
 ifeq ($(IMAGE_NAME),)
-REGISTRY ?= nvcr.io/nvidia/cloud-native
+REGISTRY ?= quay.io/mgiessing
 IMAGE_NAME := $(REGISTRY)/gpu-operator
 endif
 
