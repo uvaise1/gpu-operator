@@ -83,10 +83,10 @@ EOF
 $ helm delete $(helm ls --short -n gpu-operator | grep gpu) -n gpu-operator
 ```
 
-2.) Wait until all pods are gone
+2.) Wait until all pods are gone (None should be in state terminating)
 
 ```
-$ watch oc get pods -n gpu-operator (None should be in state terminating)
+$ watch oc get pods -n gpu-operator
 ```
 
 3.) Delete CRDs
