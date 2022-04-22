@@ -1,6 +1,6 @@
-# GPU Operator installation on Power
+# GPU Operator installation on IBM Power
 
-This section contains the [installation](#installation) as well as the [uninstallation/cleanup](#uninstallation--cleanup) of the GPU Operator!
+This section contains the GPU Operator [installation](#installation) as well as the [uninstallation/cleanup](#uninstallation--cleanup)!
 
 ## Prerequisites
 
