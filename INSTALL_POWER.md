@@ -1,6 +1,6 @@
 # GPU Operator installation on IBM Power
 
-This section contains the GPU Operator [installation](#installation) as well as the [uninstallation/cleanup](#uninstallation--cleanup)!
+This section contains the GPU Operator [installation](#installation) as well as the [uninstallation/cleanup](#uninstallation--cleanup).
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ This section contains the GPU Operator [installation](#installation) as well as 
 
 ## Installation
 
-1.) Node Feature Discovery
+1.) Install the Node Feature Discovery (NFD) Operator
 - Login to your cluster `https://console-openshift-console.apps.${CLUSTER_DOMAIN}` and install Node Feature Discovery Operator:<br>
 Operators -> OperatorHub -> Search for Node Feature Discovery (NFD) -> Install -> Create NFD instance 
 - Get your (terminal) login token from `https://oauth-openshift.apps.${CLUSTER_DOMAIN}/oauth/token/display` -> Request another token
@@ -54,7 +54,7 @@ nvidia-driver-daemonset-48.84.202204192209-0-8jt9h                2/2     Runnin
 nvidia-operator-validator-sm5q2                                   1/1     Running     0          18h
 ```
 
-5.) Run a test pod that has a GPU assigned
+5.) Run a test pod that has a GPU assigned and get the logs
 
 ```
 cat<< EOF | oc apply -f -
@@ -72,6 +72,19 @@ spec:
          nvidia.com/gpu: 1
 EOF
 ```
+
+Get the logs and verify the test states PASSED:
+
+```
+$ oc logs gpu-operator-test 
+[Vector addition of 50000 elements]
+Copy input data from the host memory to the CUDA device
+CUDA kernel launch with 196 blocks of 256 threads
+Copy output data from the CUDA device to the host memory
+Test PASSED
+Done
+```
+
 
 **You have now successfully installed the GPU Operator.**
 
